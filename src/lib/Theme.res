@@ -10,6 +10,11 @@ module Colors = {
   let black = #hex("#070707")
   let white = #hex("#ffffff")
   let red = #hex("#FF1B51")
+
+  let toString = color =>
+    switch color {
+    | #hex(color) => color
+    }
 }
 
 module Constans = {

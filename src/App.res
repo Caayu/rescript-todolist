@@ -18,9 +18,7 @@ Emotion.injectGlobal({
 
 @react.component
 let make = () => {
-  <Box p=[xs(4)] bgColor=[xs(#hex("#000")), md(#hex("#cacaca"))]>
-    <Typography tag=#h2 color=[xs(#hex("#fafafa")), md(#hex("#000"))]>
-      {`Hello from ReScript and Vite 😄`->React.string}
-    </Typography>
+  <Box width=[xs(100.0->#pct)] height=[xs(100.0->#pct)] bgColor=[xs(Theme.Colors.black)]>
+    <div />
   </Box>
 }
