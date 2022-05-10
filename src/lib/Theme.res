@@ -11,3 +11,7 @@ module Colors = {
   let white = #hex("#ffffff")
   let red = #hex("#FF1B51")
 }
+
+module Constans = {
+  let fontFamily = "'DM Sans', sans-serif"
+}
