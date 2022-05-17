@@ -3,6 +3,42 @@ open Render
 
 @module("../assets/logo.svg") external logo: string = "default"
 
+module TaskItem = {
+  @react.component
+  let make = (~name, ~createdAt, ~completed) => {
+    <Box
+      mb=[xs(2)]
+      px=[xs(3)]
+      py=[xs(2)]
+      bgColor=[xs(Theme.Colors.grayDark)]
+      borderRadius=[xs(1)]
+      display=[xs(#flex)]
+      justifyContent=[xs(#"space-between")]
+      alignItems=[xs(#center)]>
+      <Box>
+        <Typography
+          tag=#p
+          m=[xs(0)]
+          mb=[xs(1)]
+          fontSize=[xs(1.8->#rem)]
+          color=[xs(Theme.Colors.white)]
+          letterSpacing=[xs(-0.035->#em)]>
+          {name->s}
+        </Typography>
+        <Typography
+          tag=#p
+          m=[xs(0)]
+          fontSize=[xs(1.4->#rem)]
+          color=[xs(Theme.Colors.grayLight)]
+          letterSpacing=[xs(-0.035->#em)]>
+          {name->s}
+        </Typography>
+      </Box>
+      <Checkbox checked=completed />
+    </Box>
+  }
+}
+
 module NewTaskInput = {
   @react.component
   let make = () => {
@@ -31,6 +67,24 @@ module NewTaskInput = {
 let make = () => {
   <Box display=[xs(#flex)] flexDirection=[xs(#column)] alignItems=[xs(#center)]>
     <Box display=[xs(#flex)] justifyContent=[xs(#center)] tag=#header> <img src=logo /> </Box>
-    <Box mt=[xs(10)] width=[xs(100.0->#pct)] maxW=[xs(63.4->#rem)]> <NewTaskInput /> </Box>
+    <Box
+      display=[xs(#flex)]
+      flexDirection=[xs(#column)]
+      mt=[xs(10)]
+      width=[xs(100.0->#pct)]
+      maxW=[xs(63.4->#rem)]>
+      <NewTaskInput />
+      <Box mt=[xs(4)]>
+        <TaskItem
+          name="Lorem ipsum dolor sit amet" createdAt="11/10/2021 às 19h53m" completed=true
+        />
+        <TaskItem
+          name="Lorem ipsum dolor sit amet" createdAt="11/10/2021 às 19h53m" completed=false
+        />
+        <TaskItem
+          name="Lorem ipsum dolor sit amet" createdAt="11/10/2021 às 19h53m" completed=true
+        />
+      </Box>
+    </Box>
   </Box>
 }
